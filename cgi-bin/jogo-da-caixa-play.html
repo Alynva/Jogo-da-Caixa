@@ -1,49 +1,52 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Alisson Nunes">
+		<meta name="reply-to" content="alynva@gmail.com">
+		<meta name="generator" content="Dev-C++ 5.11">
+		<meta http-equiv="content-language" content="pt-br">
+		<meta name="description" content="Um jogo simples, com a mecÃ¢nica programada em Lingaugem C.">
+		<title>Jogo da caixa</title>
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/style-others.css">
+		<script type="text/javascript" src="../js/QueryString.js"></script>
+	</head>
+	<body>
+		<a class="theFloating theRight" href="javascript:history.go(0)">Atualizar</a>
 
-void getFileName(char [], char [], char [], char [], char []);
+			<h1></h1>
+			<h2></h2>
 
-int main() {
-	
-	printf("Content-type:text/html;charset=UTF-8%c%c\n", 13, 10);
-	printf("<html>");
-		printf("<head>");
-			printf("<meta charset=\"utf-8\">");
-			printf("<meta name=\"author\" content=\"Alisson Nunes\">");
-			printf("<meta name=\"reply-to\" content=\"alynva@gmail.com\">");
-			printf("<meta name=\"generator\" content=\"Dev-C++ 5.11\">");
-			printf("<meta http-equiv=\"content-language\" content=\"pt-br\">");
-			printf("<meta name=\"description\" content=\"Um jogo simples, com a mecânica programada em Lingaugem C.\">");
-			printf("<title>Jogo da caixa</title>");
-			printf("<link rel=\"stylesheet\" href=\"../css/style.css\">");
-			printf("<link rel=\"stylesheet\" href=\"../css/style-others.css\">");
-		printf("</head>");
-		printf("<body>");
-			printf("<a class=\"theFloating theRight\" href=\"javascript:history.go(0)\">Atualizar</a>");
+			<script type="text/javascript">
+				var maps = {
+					Nivel_1: {
+						w: 8,
+						h: 8,
+						m: [
+							[1, 1, 2, 2, 2, 1, 1, 1],
+							[1, 1, 2, 4, 2, 1, 1, 1],
+							[1, 1, 2, 3, 2, 2, 2, 2],
+							[2, 2, 2, 5, 3, 5, 4, 2],
+							[2, 4, 3, 5, 9, 2, 2, 2],
+							[2, 2, 2, 2, 5, 2, 1, 1],
+							[1, 1, 1, 2, 4, 2, 1, 1],
+							[1, 1, 1, 2, 2, 2, 1, 1]
+						]
+					}
+				}
+				
+				let mapa;
+
+				if (QueryString.ope == 0) {
+					mapa = maps[QueryString.mapName];
+				}
+
+				document.getElementsByTagName("h1")[0].innerHTML = QueryString.mapName;
+				document.getElementsByTagName("h2")[0].innerHTML = QueryString.playerName;
+
+			</script>
 			
-			
-			int ope;
-			char mapName[50];
-			char playerName[50];
-			FILE *mapFile;
-			char fileName[70];
-			int mapWidth;
-			int mapHeight;
-			int **blocks;
-			int i, j;
-			char moveTo[10];
-			int charPositionI;
-			int charPositionJ;
-			int charNextPositionI;
-			int charNextPositionJ;
-			int charDoubleNextPositionI;
-			int charDoubleNextPositionJ;
-			int ganhou = 1;
-			
-			char *dados = NULL;
-			dados = getenv("QUERY_STRING");
-			if (sscanf(dados, "ope=%d&mapName=%[^&]&playerName=%[^&]", &ope, mapName, playerName) == 3){
+			<!-- if (sscanf(dados, "ope=%d&mapName=%[^&]&playerName=%[^&]", &ope, mapName, playerName) == 3){
 				
 				if (ope == 0)
 					getFileName("../maps/", "done-", "", mapName, fileName);
@@ -57,7 +60,7 @@ int main() {
 				
 				
 				if (mapFile != NULL) {
-					// O jogo começou
+					// O jogo comeÃ§ou
 					printf("<h1>%s</h1>", mapName);
 					printf("<h2>%s</h2>", playerName);
 					
@@ -147,7 +150,7 @@ int main() {
 									blocks[charNextPositionI][charNextPositionJ] = 8;
 								}
 								
-								// Salvar no arquivo nova posição
+								// Salvar no arquivo nova posiÃ§Ã£o
 								if (ope == 0) {
 									getFileName("../users/", "done-", playerName, mapName, fileName);
 									ope = 2;
@@ -167,10 +170,10 @@ int main() {
 							}
 					}
 					
-					printf("<div id=\"theGame\">");
+					printf("<div id="theGame">");
 						for (i = 0; i < mapHeight; i++) {
 							for (j = 0; j < mapWidth; j++) {
-								printf("<div class=\"block%d\"></div>", blocks[i][j]);
+								printf("<div class="block%d"></div>", blocks[i][j]);
 								if (blocks[i][j] == 4 || blocks[i][j] == 8)
 									ganhou = 0;
 							}
@@ -178,17 +181,17 @@ int main() {
 						}
 					printf("</div>");
 
-					printf("<a class=\"theButton theWhite\" href=\"?ope=%d&mapName=%s&playerName=%s\">Recome&#231;ar</a>", ope - 2, mapName, playerName);
+					printf("<a class="theButton theWhite" href="?ope=%d&mapName=%s&playerName=%s">Recome&#231;ar</a>", ope - 2, mapName, playerName);
 					
 					if (!ganhou) {
-						printf("<div id=\"controls\">");
-							printf("<a class=\"up\" href=\"?ope=%d&mapName=%s&playerName=%s&moveTo=up\">up</a>", ope, mapName, playerName);
-							printf("<a class=\"left\" href=\"?ope=%d&mapName=%s&playerName=%s&moveTo=left\">left</a>", ope, mapName, playerName);
-							printf("<a class=\"right\" href=\"?ope=%d&mapName=%s&playerName=%s&moveTo=right\">right</a>", ope, mapName, playerName);
-							printf("<a class=\"down\" href=\"?ope=%d&mapName=%s&playerName=%s&moveTo=down\">down</a>", ope, mapName, playerName);
+						printf("<div id="controls">");
+							printf("<a class="up" href="?ope=%d&mapName=%s&playerName=%s&moveTo=up">up</a>", ope, mapName, playerName);
+							printf("<a class="left" href="?ope=%d&mapName=%s&playerName=%s&moveTo=left">left</a>", ope, mapName, playerName);
+							printf("<a class="right" href="?ope=%d&mapName=%s&playerName=%s&moveTo=right">right</a>", ope, mapName, playerName);
+							printf("<a class="down" href="?ope=%d&mapName=%s&playerName=%s&moveTo=down">down</a>", ope, mapName, playerName);
 						printf("</div>");
 					} else {
-						printf("<br><span class=\"theAlert theWin\">VOC&#202; GANHOOOOOOOOOOOOOU!</span>");
+						printf("<br><span class="theAlert theWin">VOC&#202; GANHOOOOOOOOOOOOOU!</span>");
 					}
 					
 					if (ganhou) {
@@ -197,25 +200,12 @@ int main() {
 					}
 					
 				} else {
-					printf("<span class=\"theAlert theFail\">Nao existe um mapa com este nome: %s</span>", fileName);
+					printf("<span class="theAlert theFail">Nao existe um mapa com este nome: %s</span>", fileName);
 				}
 			} else {
 				printf("sqn");
 			}
-			fclose(mapFile);
+			fclose(mapFile); -->
 			
-		printf("</body>");
-	printf("</html>");
-	
-	return 0;
-}
-
-void getFileName(char folder[], char add[], char user[], char mapName[], char name[]) {
-	strcpy(name, folder);
-	strcat(name, "jogo-da-caixa-");
-	strcat(name, add);
-	strcat(name, user);
-	strcat(name, "--");
-	strcat(name, mapName);
-	strcat(name, ".txt");
-}
+	</body>
+</html>
