@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Jogo da Caixa</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/style-home.css">
+	</head>
+	<body>
+		<a class="theFloating theRight" href="javascript:history.go(0)">Atualizar</a>
+		<div>
+			<h1>Vamos jogar!</h1>
+			<form method="get" action="cgi-bin/jogo-da-caixa-play.cgi">
+				<select name="ope">
+					<option value="0">Mapas prontos</option>
+					<option value="1">Testar mapas</option>
+				</select>
+				<input type="text" name="mapName" placeholder="Mapa" list="mapas" required><input type="text" name="playerName" placeholder="Jogador" required><input type="submit" value="Começar">
+				<datalist id="mapas">
+					<option value="Nivel_1">
+					<option value="Nivel_2">
+					<option value="Nivel_3">
+				</datalist>
+			</form>
+		</div>
+		<hr>
+		<div>
+			<h1>É hora de criar!</h1>
+			<form method="get" action="cgi-bin/jogo-da-caixa-maker.cgi">
+				<select name="ope">
+					<option value="0">Criar novo</option>
+					<option value="1">Editar existente</option>
+				</select><input type="text" name="mapName" placeholder="Nome do mapa" autocomplete="off" required><input type="password" name="mapPass" placeholder="Senha" required><input type="submit" value="Começar">
+			</form>
+		</div>
+	</body>
+</html>

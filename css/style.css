@@ -1,0 +1,128 @@
+* {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background: none;
+	font-family: sans-serif;
+}
+body {
+	/*overflow: hidden;*/
+	text-align: center;
+	color: #fff;
+}
+body > div:not([id]):not([class]) {
+	display: inline-block;
+	width: 40vw;
+	/*height: 80vh;*/
+	margin: 10vh auto;
+	overflow: hidden;
+	background-color: rgba(0,0,0,.4);
+	border: 1px solid rgba(0,0,0,.8);
+	padding: 1.5em 1em;
+}
+a.theFloating {
+	position: absolute;
+	top: 12px;
+	text-decoration: none;
+	color: rgba(255,255,255,.7);
+	text-transform: uppercase;
+	background-color: rgba(0,0,0,.2);
+	padding: 6px;
+	transition: background-color .6s, color .6s;
+}
+a.theFloating.theLeft {
+	left: 16px;
+}
+a.theFloating.theRight {
+	right: 16px;
+}
+a.theFloating:hover {
+	color: #fff;
+	background-color: rgba(0,0,0,.5);
+}
+h1 {
+	margin-bottom: .2em;
+}
+a.theButton {
+	color: black;
+	font-weight: bolder;
+	padding: .3em;
+	border-radius: 3px;
+	text-decoration: none;
+	margin: .2em 0;
+	display: inline-block;
+}
+a.theButton.theWhite {
+	background-color: rgba(255,255,255,.6);
+}
+a.theButton.theRed {
+	background-color: rgba(255,150,150,.6);
+}
+a.theButton.theGreen {
+	background-color: rgba(150,255,150,.6);
+}
+a.theButton.theBlue {
+	background-color: rgba(150,150,255,.6);
+}
+a.theButton.theYellow {
+	background-color: rgba(255,255,150,.6);
+}
+a.theButton.theMagenta {
+	background-color: rgba(255,150,255,.6);
+}
+a.theButton.theCyan {
+	background-color: rgba(150,255,255,.6);
+}
+a.theButton.theGrey {
+	background-color: rgba(200,200,200,.6);
+}
+span.theAlert {
+	font-weight: bolder;
+	padding: .05em .5em;
+	display: inline-block;
+	margin: .1em;
+	border-radius: .1em;
+}
+span.theAlert.theWin {
+	color: rgb(100, 100, 0);
+	background-color: rgb(255, 255, 0);
+}
+span.theAlert.theFail {
+	color: rgb(100, 0, 0);
+	background-color: rgb(255, 0, 0);
+}
+span.theAlert.theSuccess {
+	color: rgb(0, 100, 0);
+	background-color: rgb(0, 255, 0);
+}
+
+input, select {
+	background-color: #fff;
+	box-sizing: border-box;
+	margin: 0;
+	border: 0;
+	padding: 8px;
+	cursor: pointer;
+	box-shadow: 0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12),0 3px 5px -1px rgba(0,0,0,.2);
+	transition: background-color .6s, color .6s;
+	vertical-align: middle;
+}
+input[type="text"], input[type="password"], input[type="number"] {
+	cursor: auto;
+}
+input[type="number"] {
+	width: 60px;
+}
+input[type="number"]:hover {
+	background-color: transparent;
+	color: white;
+}
+select {
+	padding: 7px;
+	background-color: #ddd;
+}
+input[type="submit"]:hover {
+	cursor: pointer;
+	background-color: #666;
+	color: #ddd;
+}
